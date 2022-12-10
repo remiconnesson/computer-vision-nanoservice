@@ -1,0 +1,15 @@
+services:
+  ai:
+    build: ./code
+    ports:
+      - "8000:8000"
+    volumes:
+      - images:/root/app/data
+  box:
+    image: busybox
+    volumes:
+      - images:/images
+    command: ["ping", "8.8.8.8", "-i", "30"]
+
+volumes:
+  images: {}
